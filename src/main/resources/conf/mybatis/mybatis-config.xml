@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<properties resource="conf/settings/application.properties" />
+
+	<!-- 如果没有在调用的时候 没有指定数据库环境时，默认创建连接id=development数据库环境的session -->
+	<environments default="development">
+		<!-- 开发环境数据 -->
+		<environment id="product">
+			<transactionManager type="jdbc"/>
+			<dataSource type="com.asiainfo.kafka.consumer.util.AsiaInfoDataSourceFactory">
+				<property name="driverClass" value="${druid.product.driverClassName}" />
+				<property name="url" value="${druid.product.url}" />
+				<property name="username" value="${druid.product.username}" />
+				<property name="password" value="${druid.product.password}" />
+				<property name="initialSize" value="${druid.common.initialSize}"/>
+				<property name="minIdle" value="${druid.common.minIdle}"/>
+				<property name="maxActive" value="${druid.common.maxActive}"/>
+				<property name="maxWait" value="${druid.common.maxWait}"/>
+				<property name="timeBetweenEvictionRunsMillis" value="${druid.common.timeBetweenEvictionRunsMillis}"/>
+				<property name="minEvictableIdleTimeMillis" value="${druid.common.minEvictableIdleTimeMillis}"/>
+				<property name="validationQuery" value="${druid.common.validationQuery}"/>
+				<property name="testWhileIdle" value="${druid.common.testWhileIdle}"/>
+				<property name="testOnBorrow" value="${druid.common.testOnBorrow}"/>
+				<property name="testOnReturn" value="${druid.common.testOnReturn}"/>
+				<property name="poolPreparedStatements" value="${druid.common.poolPreparedStatements}"/>
+				<property name="maxPoolPreparedStatementPerConnectionSize" value="${druid.common.maxPoolPreparedStatementPerConnectionSize}"/>
+				<property name="connectionProperties" value="config.decrypt=true;config.decrypt.key=${publickey}" />
+			</dataSource>
+		</environment>
+
+		<!-- 生产环境数据 -->
+		<environment id="development">
+			<transactionManager type="jdbc"/>
+			<dataSource type="com.asiainfo.kafka.consumer.util.AsiaInfoDataSourceFactory">
+				<property name="driverClass" value="${druid.develop.driverClassName}" />
+				<property name="url" value="${druid.develop.url}" />
+				<property name="username" value="${druid.develop.username}" />
+				<property name="password" value="${druid.develop.password}" />
+				<property name="initialSize" value="${druid.common.initialSize}"/>
+				<property name="minIdle" value="${druid.common.minIdle}"/>
+				<property name="maxActive" value="${druid.common.maxActive}"/>
+				<property name="maxWait" value="${druid.common.maxWait}"/>
+				<property name="timeBetweenEvictionRunsMillis" value="${druid.common.timeBetweenEvictionRunsMillis}"/>
+				<property name="minEvictableIdleTimeMillis" value="${druid.common.minEvictableIdleTimeMillis}"/>
+				<property name="validationQuery" value="${druid.common.validationQuery}"/>
+				<property name="testWhileIdle" value="${druid.common.testWhileIdle}"/>
+				<property name="testOnBorrow" value="${druid.common.testOnBorrow}"/>
+				<property name="testOnReturn" value="${druid.common.testOnReturn}"/>
+				<property name="poolPreparedStatements" value="${druid.common.poolPreparedStatements}"/>
+				<property name="maxPoolPreparedStatementPerConnectionSize" value="${druid.common.maxPoolPreparedStatementPerConnectionSize}"/>
+				<property name="connectionProperties" value="config.decrypt=true;config.decrypt.key=${publickey}" />				
+			</dataSource>
+		</environment>
+
+	</environments>
+
+	<!-- SQL映射文件 -->
+
+</configuration>
